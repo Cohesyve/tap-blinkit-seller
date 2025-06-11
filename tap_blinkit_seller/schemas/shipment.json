@@ -1,0 +1,129 @@
+{
+    "type": "object",
+    "properties": {
+      "sto_number": {
+        "type": ["string", "null"]
+      },
+      "sto_type": {
+        "type": ["string", "null"]
+      },
+      "vendor_id": {
+        "type": ["integer", "null"]
+      },
+      "vendor_name": {
+        "type": ["string", "null"]
+      },
+      "manufacturer_id": {
+        "type": ["integer", "null"]
+      },
+      "manufacturer_name": {
+        "type": ["string", "null"]
+      },
+      "facility_id": {
+        "type": ["integer", "null"]
+      },
+      "facility_name": {
+        "type": ["string", "null"]
+      },
+      "city_name": {
+        "type": ["string", "null"]
+      },
+      "address": {
+        "type": ["string", "null"]
+      },
+      "outlet_id": {
+        "type": ["integer", "null"]
+      },
+      "sto_state": {
+        "type": ["string", "null"]
+      },
+      "issue_date": {
+        "type": ["string", "null"]
+      },
+      "expiry_date": {
+        "type": ["string", "null"]
+      },
+      "schedule_date": {
+        "type": ["string", "null"]
+      },
+      "scheduled_on": {
+        "type": ["string", "null"]
+      },
+      "total_units_ordered": {
+        "type": ["integer", "null"]
+      },
+      "total_sto_amount": {
+        "type": ["integer", "null"]
+      },
+      "item_count": {
+        "type": ["integer", "null"]
+      },
+      "download_url": {
+        "type": ["string", "null"]
+      },
+      "total_grn_quantity": {
+        "type": ["integer", "null"]
+      },
+      "active": {
+        "type": ["boolean", "null"]
+      },
+      "created_at": {
+        "type": ["string", "null"]
+      },
+      "created_by": {
+        "type": ["integer", "null"]
+      },
+      "updated_at": {
+        "type": ["string", "null"]
+      },
+      "updated_by": {
+        "type": ["integer", "null"]
+      },
+      "delivery_date": {
+        "type": ["string", "null"]
+      },
+      "pm_name": {
+        "type": ["string", "null"]
+      },
+      "pm_phone": {
+        "type": ["string", "null"]
+      },
+      "pm_email": {
+        "type": ["string", "null"]
+      },
+      "multiple_grn": {
+        "type": ["integer", "null"]
+      },
+      "sto_excel_report_url": {
+        "type": ["string", "null"]
+      },
+      "entity_vendor_cin": {
+        "type": ["string", "null"]
+      },
+      "entity_vendor_legal_name": {
+        "type": ["string", "null"]
+      },
+      "delivery_type": {
+        "type": ["string", "null"]
+      },
+      "appointment_id": {
+        "type": ["string", "null"]
+      },
+      "appointment_status": {
+        "type": ["string", "null"]
+      },
+      "appointment_scheduled_date": {
+        "type": ["string", "null"]
+      },
+      "appointment_slot_id": {
+        "type": ["integer", "null"]
+      },
+      "courier_info": {
+        "type": ["string", "null"]
+      },
+      "serial_codes_upload_status": {
+        "type": ["string", "null"]
+      }
+    }
+  }
+  

@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "properties": {
+    "allow_primary": {
+      "type": ["boolean", "null"],
+      "description": "Indicates if the category allows primary assignment."
+    },
+    "id": {
+      "type": ["number", "null"],
+      "description": "Unique identifier for the category."
+    },
+    "is_leaf": {
+      "type": ["boolean", "null"],
+      "description": "True if this is a leaf category (has no subcategories), false otherwise."
+    },
+    "is_primary": {
+      "type": ["boolean", "null"],
+      "description": "True if this is considered a primary category."
+    },
+    "level": {
+      "type": ["number", "null"],
+      "description": "The hierarchical level of the category."
+    },
+    "mapping_enabledd": {
+      "type": ["boolean", "null"],
+      "description": "Indicates if mapping is enabled for this category. (Note: potential typo in original data: 'mapping_enabledd' instead of 'mapping_enabled')"
+    },
+    "name": {
+      "type": ["string", "null"],
+      "description": "The name of the category (e.g., 'Children Magazines')."
+    },
+    "parent_category_id": {
+      "type": ["number", "null"],
+      "description": "The ID of the parent category, if applicable."
+    },
+    "retail_category_id": {
+      "type": ["number", "null"],
+      "description": "The retail-specific category ID."
+    },
+    "type": {
+      "type": ["string", "null"],
+      "description": "The type of category (e.g., 'subcategory')."
+    }
+  }
+}

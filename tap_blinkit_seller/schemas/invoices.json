@@ -1,0 +1,57 @@
+{
+    "type": "object",
+
+    "properties": {
+      "date": {
+        "type": ["integer", "null"],
+        "description": "Unix timestamp for the invoice date"
+      },
+      "invoice_period": {
+        "type": ["object", "null"],
+        "properties": {
+          "start_date": {
+            "type": ["integer", "null"],
+            "description": "Unix timestamp for the start of the invoice period"
+          },
+          "end_date": {
+            "type": ["integer", "null"],
+            "description": "Unix timestamp for the end of the invoice period"
+          }
+        },
+        "required": ["start_date", "end_date"]
+      },
+      "issuer": {
+        "type": ["string", "null"],
+        "description": "Name of the invoice issuer"
+      },
+      "service_type": {
+        "type": ["string", "null"],
+        "description": "Type of service provided"
+      },
+      "state": {
+        "type": ["string", "null"],
+        "description": "Geographical state or region"
+      },
+      "invoice_url": {
+        "type": ["string", "null"],
+        "format": "uri",
+        "description": "URL to the invoice document"
+      },
+      "cn_urls": {
+        "type": ["array", "null"],
+        "items": {
+          "type": ["string", "null"],
+          "format": "uri"
+        },
+        "description": "List of URLs for credit notes, or null if none"
+      },
+      "invoice_number": {
+        "type": ["string", "null"],
+        "description": "Invoice number"
+      },
+      "order_id": {
+        "type": ["integer", "null"],
+        "description": "Associated order ID, or null if not applicable"
+      }
+    }
+  }

@@ -1,0 +1,59 @@
+{
+    "type": "object",
+
+    "properties": {
+      "facility_id": {
+        "type": ["integer", "null"]
+      },
+      "facility_name": {
+        "type": ["string", "null"]
+      },
+      "dark_store_count": {
+        "type": ["integer", "null"]
+      },
+      "city_details": {
+        "type": ["array", "null"],
+        "items": {
+          "type": "object",
+          "properties": {
+            "city_name": {
+              "type": ["string", "null"]
+            },
+            "dark_store_count": {
+              "type": ["integer", "null"]
+            }
+          }
+        }
+      },
+      "inventory": {
+        "type": ["object", "null"],
+        "properties": {
+          "sellable": {
+            "type": ["integer", "null"]
+          },
+          "incoming": {
+            "type": ["integer", "null"]
+          },
+          "expired": {
+            "type": ["integer", "null"]
+          },
+          "near_expiry": {
+            "type": ["integer", "null"]
+          },
+          "damaged": {
+            "type": ["integer", "null"]
+          },
+          "lost": {
+            "type": ["integer", "null"]
+          },
+          "recall": {
+            "type": ["integer", "null"]
+          },
+          "health": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    }
+  }
+  

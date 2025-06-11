@@ -1,0 +1,51 @@
+{
+    "type": "object",
+    "properties": {
+      "id": {
+        "type": ["integer", "null"]
+      },
+      "brand_name": {
+        "type": ["string", "null"]
+      },
+      "manufacturer_name": {
+        "type": ["string", "null"]
+      },
+      "trademark_document_key": {
+        "type": ["string", "null"]
+      },
+      "authorization_document_key": {
+        "type": ["string", "null"]
+      },
+      "trademark_document_id": {
+        "type": ["integer", "null"]
+      },
+      "authorization_document_id": {
+        "type": ["integer", "null"]
+      },
+      "brand_logo_key": {
+        "type": ["string", "null"]
+      },
+      "brand_logo_id": {
+        "type": ["integer", "null"]
+      },
+      "cms_brand_id": {
+        "type": ["integer", "null"]
+      },
+      "is_new_brand": {
+        "type": ["boolean", "null"]
+      },
+      "trademark_number": {
+        "type": ["integer", "null"]
+      },
+      "status": {
+        "type": ["string", "null"]
+      },
+      "reason": {
+        "type": ["string", "null"]
+      },
+      "cms_brand_logo_url": {
+        "type": ["string", "null"]
+      }
+    }
+  }
+  
