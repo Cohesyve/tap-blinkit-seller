@@ -1,0 +1,32 @@
+{
+    "type": ["null", "object"],
+    "properties": {
+        "name": {
+            "type": ["null", "string"]
+        },
+        "state_code": {
+            "type": ["null", "string"]
+        },
+        "status": {
+            "type": ["null", "string"]
+        },
+        "tooltip": {
+            "type": ["null", "string"]
+        },
+        "lock_reasons": {
+            "type": ["null", "array"],
+            "items": {
+                "type": ["null", "string"]
+            }
+        },
+        "servicability": {
+            "type": ["null", "integer"]
+        },
+        "active_facilities_count": {
+            "type": ["null", "integer"]
+        },
+        "total_facilities_count": {
+            "type": ["null", "integer"]
+        }
+    }
+}

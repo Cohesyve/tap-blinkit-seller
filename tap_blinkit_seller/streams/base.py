@@ -116,6 +116,7 @@ class PaginatedStream(BaseStream):
         LOGGER.info('Syncing data for entity {}'.format(table))
 
         body = self.get_body()
+        params = self.get_params()
                 
         client: BlinkitsellerClient = self.client
 
@@ -131,7 +132,7 @@ class PaginatedStream(BaseStream):
             LOGGER.info('Syncing from page {}'.format(page_count))
             try:
                 result = client.make_request(
-                    url, self.API_METHOD, body=body, headers=headers)
+                    url, self.API_METHOD, body=body, headers=headers, params=params)
                 data = self.get_stream_data(result.json())
                 with singer.metrics.record_counter(endpoint=table) as counter:
                     for obj in data:

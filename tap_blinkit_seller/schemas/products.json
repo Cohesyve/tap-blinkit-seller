@@ -1,4 +1,570 @@
 {
-    "url": "https://seller.blinkit.com/seller-hub/api/catalog/dashboard-products?page=0&name=&sort_by=RELEVANCE&filtering_enabled=true"
-
+    "type": "object",
+    "properties": {
+        "activation_mode": {
+            "type": "string"
+        },
+        "activation_state": {
+            "type": "string"
+        },
+        "activation_timestamp": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "all_assets": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "asset_type": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "image_path": {
+                        "type": "string",
+                        "format": "uri"
+                    },
+                    "is_png_transparent": {
+                        "type": "boolean"
+                    },
+                    "png_image_path": {
+                        "type": "string"
+                    },
+                    "sort_order": {
+                        "type": "integer"
+                    },
+                    "video_path": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "asset_type",
+                    "id",
+                    "image_path",
+                    "is_png_transparent",
+                    "png_image_path",
+                    "sort_order",
+                    "video_path"
+                ]
+            }
+        },
+        "attributes": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "id",
+                    "name",
+                    "value"
+                ]
+            }
+        },
+        "brand": {
+            "type": "string"
+        },
+        "categories": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "business_type": {
+                        "type": "string"
+                    },
+                    "id": {
+                        "type": "integer"
+                    },
+                    "is_primary": {
+                        "type": "boolean"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "usecase": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "business_type",
+                    "id",
+                    "is_primary",
+                    "name",
+                    "usecase"
+                ]
+            }
+        },
+        "enabled_flag": {
+            "type": "boolean"
+        },
+        "id": {
+            "type": "integer"
+        },
+        "item_id": {
+            "type": "integer"
+        },
+        "manufacturer": {
+            "type": "string"
+        },
+        "margins": {
+            "type": "integer"
+        },
+        "name": {
+            "type": "string"
+        },
+        "price": {
+            "type": "integer"
+        },
+        "price_slabs": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "start_price": {
+                        "type": "integer"
+                    },
+                    "end_price": {
+                        "type": "integer"
+                    },
+                    "commission": {
+                        "type": "integer"
+                    },
+                    "commission_type": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "start_price",
+                    "end_price",
+                    "commission",
+                    "commission_type"
+                ]
+            }
+        },
+        "product_requests": {
+            "type": "object",
+            "properties": {
+                "action": {
+                    "type": "string"
+                },
+                "ad_user_id": {
+                    "type": "integer"
+                },
+                "brand": {
+                    "type": "object",
+                    "properties": {
+                        "display_name": {
+                            "type": "string"
+                        },
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "display_name",
+                        "id",
+                        "name"
+                    ]
+                },
+                "business_category": {
+                    "type": "object"
+                },
+                "combo_flag": {
+                    "type": "boolean"
+                },
+                "comments": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "country_of_origin": {
+                    "type": "string"
+                },
+                "creator_email": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "enabled_flag": {
+                    "type": "boolean"
+                },
+                "food_type": {
+                    "type": "string"
+                },
+                "fssai": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "gross_weight": {
+                    "type": "integer"
+                },
+                "hsn_code": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "install_ts": {
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "is_ptr": {
+                    "type": "boolean"
+                },
+                "manufacturer_address": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "manufacturer_name": {
+                    "type": "string"
+                },
+                "mrp": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "net_weight": {
+                    "type": "integer"
+                },
+                "primary_category": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name"
+                    ]
+                },
+                "priority": {
+                    "type": "string"
+                },
+                "product": {
+                    "type": "integer"
+                },
+                "reference_id": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "request_assets": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "asset_path": {
+                                "type": "string"
+                            },
+                            "asset_thumbnail_path": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "asset_type": {
+                                "type": "string"
+                            },
+                            "cdn_asset_path": {
+                                "type": "string",
+                                "format": "uri"
+                            },
+                            "cdn_thumbnail_asset_path": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "id": {
+                                "type": "integer"
+                            },
+                            "request": {
+                                "type": "integer"
+                            },
+                            "sequence": {
+                                "type": "integer"
+                            },
+                            "video_auto_play": {
+                                "type": "boolean"
+                            }
+                        },
+                        "required": [
+                            "asset_path",
+                            "asset_thumbnail_path",
+                            "asset_type",
+                            "cdn_asset_path",
+                            "cdn_thumbnail_asset_path",
+                            "id",
+                            "request",
+                            "sequence",
+                            "video_auto_play"
+                        ]
+                    }
+                },
+                "request_fields": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "properties": {
+                            "field_type": {
+                                "type": "string"
+                            },
+                            "id": {
+                                "type": "integer"
+                            },
+                            "name": {
+                                "type": "string"
+                            },
+                            "request": {
+                                "type": "integer"
+                            },
+                            "value": {
+                                "type": "string"
+                            }
+                        },
+                        "required": [
+                            "field_type",
+                            "id",
+                            "name",
+                            "request",
+                            "value"
+                        ]
+                    }
+                },
+                "request_sent_ts": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "date-time"
+                },
+                "request_state_change_reasons": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "scraping_link": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "source": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "state_change_reason": {
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "type": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "integer"
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "name"
+                    ]
+                },
+                "unit": {
+                    "type": "string"
+                },
+                "upc": {
+                    "type": "string"
+                },
+                "update_ts": {
+                    "type": "string",
+                    "format": "date-time"
+                }
+            },
+            "required": [
+                "action",
+                "ad_user_id",
+                "brand",
+                "business_category",
+                "combo_flag",
+                "comments",
+                "country_of_origin",
+                "creator_email",
+                "enabled_flag",
+                "food_type",
+                "fssai",
+                "gross_weight",
+                "hsn_code",
+                "id",
+                "install_ts",
+                "is_ptr",
+                "manufacturer_address",
+                "manufacturer_name",
+                "mrp",
+                "name",
+                "net_weight",
+                "primary_category",
+                "priority",
+                "product",
+                "reference_id",
+                "request_assets",
+                "request_fields",
+                "request_sent_ts",
+                "request_state_change_reasons",
+                "scraping_link",
+                "source",
+                "state",
+                "state_change_reason",
+                "type",
+                "unit",
+                "upc",
+                "update_ts"
+            ]
+        },
+        "rate_card_data": {
+            "type": "object",
+            "properties": {
+                "business_category_id": {
+                    "type": "integer"
+                },
+                "rate_configuration": {
+                    "type": "object",
+                    "properties": {
+                        "platform_commission": {
+                            "type": "string"
+                        },
+                        "inwarding": {
+                            "type": "string"
+                        },
+                        "storage": {
+                            "type": "string"
+                        },
+                        "fulfillment": {
+                            "type": "string"
+                        },
+                        "customer_return": {
+                            "type": "string"
+                        },
+                        "inventory_recall": {
+                            "type": "string"
+                        },
+                        "ageing": {
+                            "type": "object",
+                            "properties": {
+                                "slabs": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "days": {
+                                                "type": "string"
+                                            },
+                                            "cft": {
+                                                "type": "number"
+                                            },
+                                            "unit": {
+                                                "type": "number"
+                                            }
+                                        },
+                                        "required": [
+                                            "days",
+                                            "cft",
+                                            "unit"
+                                        ]
+                                    }
+                                }
+                            },
+                            "required": [
+                                "slabs"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "platform_commission",
+                        "inwarding",
+                        "storage",
+                        "fulfillment",
+                        "customer_return",
+                        "inventory_recall",
+                        "ageing"
+                    ]
+                }
+            },
+            "required": [
+                "business_category_id",
+                "rate_configuration"
+            ]
+        },
+        "selling_price": {
+            "type": "integer"
+        },
+        "unit": {
+            "type": "string"
+        },
+        "upcs": {
+            "type": "array",
+            "items": {
+                "type": "string"
+            }
+        },
+        "variant_mrp": {
+            "type": "integer"
+        }
+    },
+    "required": [
+        "activation_mode",
+        "activation_state",
+        "activation_timestamp",
+        "all_assets",
+        "attributes",
+        "brand",
+        "categories",
+        "enabled_flag",
+        "id",
+        "item_id",
+        "manufacturer",
+        "margins",
+        "name",
+        "price",
+        "price_slabs",
+        "product_requests",
+        "rate_card_data",
+        "selling_price",
+        "unit",
+        "upcs",
+        "variant_mrp"
+    ]
 }

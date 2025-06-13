@@ -1,0 +1,52 @@
+{
+    "type": "object",
+    "properties": {
+        "item_id": {
+            "type": ["integer", "null"]
+        },
+        "upc": {
+            "type": ["string", "null"]
+        },
+        "pid": {
+            "type": ["integer", "null"]
+        },
+        "name": {
+            "type": ["string", "null"]
+        },
+        "uom": {
+            "type": ["string", "null"]
+        },
+        "inventory": {
+            "type": ["object", "null"],
+            "properties": {
+                "sellable": {
+                    "type": ["integer", "null"]
+                },
+                "incoming": {
+                    "type": ["integer", "null"]
+                },
+                "expired": {
+                    "type": ["integer", "null"]
+                },
+                "near_expiry": {
+                    "type": ["integer", "null"]
+                },
+                "damaged": {
+                    "type": ["integer", "null"]
+                },
+                "lost": {
+                    "type": ["integer", "null"]
+                },
+                "recall": {
+                    "type": ["integer", "null"]
+                },
+                "health": {
+                    "type": ["string", "null"]
+                }
+            }
+        },
+        "brand_name": {
+            "type": ["string", "null"]
+        }
+    }
+}

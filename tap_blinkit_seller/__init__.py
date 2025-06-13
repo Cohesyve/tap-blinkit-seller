@@ -18,7 +18,7 @@ class BlinkitsellerRunner(tap_framework.Runner):
 @singer.utils.handle_top_exception(LOGGER)
 def main():
     args = singer.utils.parse_args(
-        required_config_keys=['email'])
+        required_config_keys=['email_id'])
 
     client = BlinkitsellerClient(args.config)
 

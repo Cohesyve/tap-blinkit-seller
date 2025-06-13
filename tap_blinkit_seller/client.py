@@ -24,80 +24,130 @@ class BlinkitsellerClient:
         self.config = config
         self.access_token = self.get_authorization()
 
-    def get_jwt_token(self):
+    def trigger_login_email(self):
+        url = "https://seller.blinkit.com/auth/api/v1/email/send_otp"
 
-        response = requests.post("https://fcc.blinkit_seller.co.in/api/v1/auth/sign-in?applicationId=d0cd4873-7cb3-4c7c-9a25-3b109a0d2301", json={
-            "email": self.config.get("email"),
-            "password": self.config.get("password")
+# Headers copied/inspired from Postman's "Code" snippet
+        headers = {
+            "User-Agent": "PostmanRuntime/7.29.2", 
+            "Accept": "*/*",
+            'App_client': "seller-dashboard-web",
+            'x-api-key': self.config['X-Api-Key'],
+        }
+
+        params = {
+            "email_id": self.config['email_id']
+        }
+
+        try:
+            response = requests.post(url, headers=headers, params=params)
+            print(f"Status Code: {response.status_code}")
+            print(f"Response Text: {response.text}")
+            response.raise_for_status() # Raises an HTTPError for bad responses (4XX or 5XX)
+        except requests.exceptions.HTTPError as errh:
+            print(f"Http Error: {errh}")
+            print(f"Response content: {errh.response.content}")
+        except requests.exceptions.ConnectionError as errc:
+            print(f"Error Connecting: {errc}")
+        except requests.exceptions.Timeout as errt:
+            print(f"Timeout Error: {errt}")
+        except requests.exceptions.RequestException as err:
+            print(f"Oops: Something Else: {err}")
+
+        return response.json()['success']
+
+    def get_auth_data_from_email(self):
+        # api_token = os.getenv("MAKE_API_TOKEN")
+        api_token = os.environ.get('MAKE_API_TOKEN')
+        # api_token = "74f09904-dc7b-42d4-976c-5cc2c8e5f10d"
+        scenario_id = 5103297
+        url = f"https://eu2.make.com/api/v2/scenarios/{scenario_id}/run"
+        headers = {
+            "Authorization": f"Token {api_token}",
+            "Content-Type": "application/json"
+        }
+        body = {
+            "responsive": True
+        }
+
+        response = requests.post(url, headers=headers, json=body)
+
+        response.raise_for_status()
+
+        if response.status_code != 200:
+            raise Exception(f"Failed to trigger scenario: {response.text}")
+        
+        sign_in_link = response.json().get("outputs", {}).get("link")
+        if not sign_in_link:
+            raise Exception("No sign-in link found in the response")
+        
+        return sign_in_link
+
+    def get_initial_access_token(self):
+
+        email_triggered = self.trigger_login_email()
+
+        if not email_triggered:
+            raise RuntimeError("Failed to trigger email")
+
+        time.sleep(20)
+        
+        # # Retrieve the magic link from MAKE and navigate to it
+        otp = self.get_auth_data_from_email()
+        LOGGER.info(f"OTP: {otp}")
+
+        identity = requests.post("https://seller.blinkit.com/auth/api/v1/email/verify_otp", json={
+            "email_id": self.config.get("email"),
+            "verify_code": otp
         })
 
-        response_json = response.json()
+        LOGGER.info(f"identity: {identity.json()}")
+
         # Add identity values to the config
-        self.config['jwtToken'] = response_json.get('jwtToken')
-        self.config['tokenType'] = response_json.get('tokenType')
-        self.config['redirectUrl'] = response_json.get('redirectUrl')
-        self.config['userId'] = response_json.get('userId')
-        self.config['fullName'] = response_json.get('fullName')
-        self.config['contact'] = response_json.get('contact')
-        self.config['tags'] = response_json.get('tags')
-
-        # Decode the JWT token
-        jwt_parts = response_json.get('jwtToken').split('.')
-        if len(jwt_parts) == 3:
-            try:
-                jwt_payload = jwt_parts[1]
-                # Add padding if necessary
-                jwt_payload += '=' * (4 - len(jwt_payload) % 4)
-                decoded_payload = base64.b64decode(jwt_payload).decode('utf-8')
-                self.config['jwtPayload'] = json.loads(decoded_payload)
-            except Exception as e:
-                LOGGER.warning(f"Could not decode JWT payload: {e}")
-        else:
-            LOGGER.warning("JWT token does not have the expected structure.")
+        identity_json = identity.json()
+        self.config['access_token'] = identity_json.get('access_token')
+        self.config['refresh_token'] = identity_json.get('refresh_token')
 
         update_config(self.config)
 
-    def refresh_token(self):
-        refreshed_identity = requests.post(
-            "https://securetoken.googleapis.com/v1/token?key=AIzaSyA258Mym_O68D-BQvoK8IUcTlyI0OrEFDQ",
-            headers={"Content-Type": "application/x-www-form-urlencoded"},
-            data={
-            "grant_type": "refresh_token",
-            "refresh_token": self.config.get('refresh_token')
-            }
-        )
+    # def refresh_token(self):
+    #     refreshed_identity = requests.post(
+    #         "https://securetoken.googleapis.com/v1/token?key=AIzaSyA258Mym_O68D-BQvoK8IUcTlyI0OrEFDQ",
+    #         headers={"Content-Type": "application/x-www-form-urlencoded"},
+    #         data={
+    #         "grant_type": "refresh_token",
+    #         "refresh_token": self.config.get('refresh_token')
+    #         }
+    #     )
 
-        LOGGER.info("refreshed_identity", refreshed_identity.json())
+    #     LOGGER.info("refreshed_identity", refreshed_identity.json())
 
-        if refreshed_identity.status_code != 200:
-            raise RuntimeError(f"Failed to refresh token: {refreshed_identity.text}")
-        refreshed_identity_json = refreshed_identity.json()
-        self.config['jwtToken'] = refreshed_identity_json.get('id_token')
-        self.config['refresh_token'] = refreshed_identity_json.get('refresh_token')
-        self.config['expiresAt'] = int(time.time()) + int(refreshed_identity_json.get('expires_in'))
-        self.config['localId'] = refreshed_identity_json.get('user_id')
-        update_config(self.config)
+    #     if refreshed_identity.status_code != 200:
+    #         raise RuntimeError(f"Failed to refresh token: {refreshed_identity.text}")
+    #     refreshed_identity_json = refreshed_identity.json()
+    #     self.config['idToken'] = refreshed_identity_json.get('id_token')
+    #     self.config['refresh_token'] = refreshed_identity_json.get('refresh_token')
+    #     self.config['expiresAt'] = int(time.time()) + int(refreshed_identity_json.get('expires_in'))
+    #     self.config['localId'] = refreshed_identity_json.get('user_id')
+    #     update_config(self.config)
 
     def get_authorization(self):
-        # jwtToken = self.config.get('jwtToken')
-        # if not jwtToken:
-        #     LOGGER.info("No jwtToken found, getting new one")
-        #     self.get_jwt_token()
-        #     return self.config['jwtToken']
-
-        self.get_jwt_token()
-        return self.config['jwtToken']
+        idToken = self.config.get('access_token')
+        if not idToken:
+            LOGGER.info("No access_token found, getting new one")
+            self.get_initial_access_token()
+            return self.config['access_token']
 
         # token_expiry = self.config.get('expiresAt')
         # if token_expiry and time.time() < token_expiry:
         #     LOGGER.info("Token is still valid")
-        #     return self.config.get('jwtToken')
+        #     return self.config.get('idToken')
         
         # LOGGER.info("Token expired, refreshing")
 
         # self.refresh_token()
 
-        return self.config['jwtToken']
+        return self.config['access_token']
 
     def make_request(self, url, method, params=None, body=None, headers=None, attempts=0):
         LOGGER.info("Making {} request to {} ({})".format(method, url, params))
@@ -112,7 +162,10 @@ class BlinkitsellerClient:
         elif 'Accept' not in headers:
             headers['Accept'] = '*'
 
-        headers["Authorization"] = self.config['jwtToken']
+        headers["Access_token"] = self.config['access_token']
+        headers['App_client'] = "seller-dashboard-web"
+        headers['X-Api-Key'] = self.config['X-Api-Key']
+        headers['User-Agent'] = 'PostmanRuntime/7.44.0'
 
         if method == 'GET':
             body = None

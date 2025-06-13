@@ -1,0 +1,63 @@
+{
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "tag": {
+            "type": "string"
+        },
+        "full_address": {
+            "type": "string"
+        },
+        "pincode": {
+            "type": "integer"
+        },
+        "city_name": {
+            "type": "string"
+        },
+        "retail_city_id": {
+            "type": "integer"
+        },
+        "state_name": {
+            "type": "string"
+        },
+        "gstin_id": {
+            "type": ["null", "string"]
+        },
+        "gstin": {
+            "type": "object",
+            "properties": {
+                "gstin": {
+                    "type": "string"
+                },
+                "doc_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "fssai_id": {
+            "type": "string"
+        },
+        "seller_fssai": {
+            "type": "object",
+            "properties": {
+                "fssai_number": {
+                    "type": "string"
+                },
+                "doc_url": {
+                    "type": "string"
+                }
+            }
+        },
+        "vendor_address_id": {
+            "type": "integer"
+        },
+        "status": {
+            "type": "string"
+        },
+        "reason": {
+            "type": "string"
+        }
+    }
+}

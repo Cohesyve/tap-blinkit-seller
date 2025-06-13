@@ -1,0 +1,67 @@
+{
+    "type": "object",
+    "properties": {
+        "pyrefid": {
+            "type": "string"
+        },
+        "cycle_duration": {
+            "type": "string"
+        },
+        "cycle_start_timestamp": {
+            "type": "integer"
+        },
+        "cycle_end_timestamp": {
+            "type": "integer"
+        },
+        "units": {
+            "type": "integer"
+        },
+        "payout_date": {
+            "type": "string"
+        },
+        "download_payout_date": {
+            "type": "string",
+            "format": "date"
+        },
+        "utr": {
+            "type": "string"
+        },
+        "payout_amount": {
+            "type": "string"
+        },
+        "status": {
+            "type": "string"
+        },
+        "charges_breakup": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "key": {
+                        "type": "string"
+                    },
+                    "value": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "key",
+                    "value"
+                ]
+            }
+        }
+    },
+    "required": [
+        "pyrefid",
+        "cycle_duration",
+        "cycle_start_timestamp",
+        "cycle_end_timestamp",
+        "units",
+        "payout_date",
+        "download_payout_date",
+        "utr",
+        "payout_amount",
+        "status",
+        "charges_breakup"
+    ]
+}

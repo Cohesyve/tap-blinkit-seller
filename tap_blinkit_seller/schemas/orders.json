@@ -1,0 +1,168 @@
+{
+    "type": "object",
+    "properties": {
+        "S.No.": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Invoice ID": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Order ID": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Item ID": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Order Date": {
+            "type": [
+                "string",
+                "null"
+            ],
+            "format": "date"
+        },
+        "Supply City": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Customer City": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Product Name": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Variant Description": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "L0 Category": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "L1 Category": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "L2 Category": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Order Status": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "HSN Code": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IGST Percentage": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "CGST Percentage": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SGST Percentage": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "CESS Percentage": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "Quantity": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "MRP (Rs)": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Selling Price (Rs)": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IGST Value": {
+            "type": [
+                "null",
+                "string"
+            ]
+        },
+        "CGST Value": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SGST Value": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "CESS Value": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Total Tax": {
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Total Gross Bill Amount": {
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    }
+}

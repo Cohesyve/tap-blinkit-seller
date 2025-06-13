@@ -1,0 +1,26 @@
+{
+    "type": ["null", "object"],
+    "properties": {
+        "facility_name": {
+            "type": ["null", "string"]
+        },
+        "facility_id": {
+            "type": ["null", "integer"]
+        },
+        "facility_address": {
+            "type": ["null", "string"]
+        },
+        "status": {
+            "type": ["null", "string"]
+        },
+        "is_active": {
+            "type": ["null", "boolean"]
+        },
+        "state_code": {
+            "type": ["null", "string"]
+        },
+        "state_name": {
+            "type": ["null", "string"]
+        }
+    }
+}

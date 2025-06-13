@@ -6,18 +6,18 @@ import json
 LOGGER = singer.get_logger()  # noqa
 
 
-class WarehouseStream(BaseStream):
+class BlinkitLocationStateStream(BaseStream):
     API_METHOD = 'GET'
-    TABLE = 'warehouse'
-    KEY_PROPERTIES = ['facility_id']
+    TABLE = 'blinkit_location_states'
+    KEY_PROPERTIES = ['state_code']
     CACHE = True
 
     @property
     def api_path(self):
-        return '/api/inventories/warehouses'
+        return '/api/apob/details'
 
     def get_stream_data(self, result):
         return [
             self.transform_record(record)
-            for record in result['data']
+            for record in result['data']['states']
         ]

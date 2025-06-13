@@ -19,5 +19,5 @@ class TransactionStream(BaseStream):
     def get_stream_data(self, result):
         return [
             self.transform_record(record)
-            for record in result['payment_details']
+            for record in result['data']['payment_details']
         ]
